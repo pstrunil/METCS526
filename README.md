@@ -7,7 +7,6 @@ All the assignements and homeworks are uploaded here for the BU MET CS 526 class
 
 ***Run:***
 
-
 &nbsp;&nbsp;&nbsp;&nbsp;locate the directory, then run "python3 plaindrome.py filename.txt"
 &nbsp;&nbsp;&nbsp;&nbsp;< also works if you want it as stdin. filename.txt is placeholder for instrunctions.
 &nbsp;&nbsp;&nbsp;&nbsp;
