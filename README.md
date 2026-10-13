@@ -1,22 +1,32 @@
 # METCS526
 All the assignements and homeworks are uploaded here for the BU MET CS 526 class.
 
+
 **Homework 3:**
 
+
 ***Run:***
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;locate the directory, then run "python3 plaindrome.py filename.txt"
 &nbsp;&nbsp;&nbsp;&nbsp;< also works if you want it as stdin. filename.txt is placeholder for instrunctions.
 &nbsp;&nbsp;&nbsp;&nbsp;
 
+
 **Problem 1:** (see: palindrome.py and read_check.py)
+
 
 This question requires us to construct a palindrome checker, that intakes lines and spits out a sequence of True or Falses as well as the number of True statements.
 
+
 After noticing a pattern of having to read inputs, I just decided to make a standalone program that checks the validity of a text file and gives out the lines. (See read_check.py). This is pretty much the same checking method I used in the previous homeworks, but this time made into a single file. I also added the case where we read from source, the case where the file name isn't given. Specifically stdin will be read as raw bytes, then decoded into a uft-8 string and split into a list of individual lines. This is done because the usual stdin.readlines() method replaces bytes it can't decode with ones that it can. So to avoid it, we use the utf-8 as it's the global standard for text data and we should be able to read the file. If it does't pass this check, it fails and exists. From now on, this will be used for any future text file validation.
+
 
 Now onto the actual task at hand. the palindrome checker works rather simply (see palindrome.py). Using the read_check program we obtain a list of lines. To ensure that it runs properly, we strip the list of any empty lines. Then for each non-empty line we remove spaces within the word. Then over the range from first to the middle we compare the chars at positions i and last position -i. (So if i is the first position and n is the last, then we compare char at first position and last position, then second and last position -1 etc.) If any two are different we flag it as not a palindrome, otherwise it is. Thus, we can make an array of booleans and print them out as well as the sum of the True statements.
 
+
 **Problem 2:** (see substring_print.py and read_check.py)
+
 
 ***Run:***
 &nbsp;&nbsp;&nbsp;&nbsp;locate the directory, then run "python3 substring_print.py filename.txt"
