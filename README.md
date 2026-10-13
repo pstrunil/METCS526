@@ -10,7 +10,7 @@ All the assignements and homeworks are uploaded here for the BU MET CS 526 class
 &nbsp;&nbsp;&nbsp;&nbsp;
 
 
-**Problem 1:** (see: palindrome.py and read_check.py)
+**Problem 1:** (see: palindrome.py and read_check.py) (For example exectution see Example1.1.png and Example1.2.png)
 
 This question requires us to construct a palindrome checker, that intakes lines and spits out a sequence of True or Falses as well as the number of True statements.
 
@@ -19,7 +19,7 @@ After noticing a pattern of having to read inputs, I just decided to make a stan
 Now onto the actual task at hand. the palindrome checker works rather simply (see palindrome.py). Using the read_check program we obtain a list of lines. To ensure that it runs properly, we strip the list of any empty lines. Then for each non-empty line we remove spaces within the word. Then over the range from first to the middle we compare the chars at positions i and last position -i. (So if i is the first position and n is the last, then we compare char at first position and last position, then second and last position -1 etc.) If any two are different we flag it as not a palindrome, otherwise it is. Thus, we can make an array of booleans and print them out as well as the sum of the True statements.
 
 
-**Problem 2:** (see substring_print.py and read_check.py)
+**Problem 2:** (see substring_print.py and read_check.py) (For example exectution see Example2.1 and Example 2.2)
 
 ***Run:***
 
@@ -37,7 +37,7 @@ I was thinking for a bit about this. My first approach was to just make an actua
 &nbsp;&nbsp;&nbsp;&nbsp;In conclusion we completely recursively construct a tree of substrings. We recursively traverse it to make a list of all the substirngs. After sorting them we print each one out.
 
 
-**Problem 3:** (see node4.py; node.py; arraystack.py; sllstack.py; dllstack.py; stack_reversal.py)
+**Problem 3:** (see node4.py; node.py; arraystack.py; sllstack.py; dllstack.py; stack_reversal.py) (For example exectution see Example3.1)
 
 
 ***Run:***
@@ -141,7 +141,7 @@ We import the 3 classes that we have made and then show them. Since they all sha
 
 
 
-**Problem 4:** (see ghostbusters.py)
+**Problem 4:** (see ghostbusters.py) (For example exectution see Example4.1)
 
 
 ***Run:***
