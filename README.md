@@ -4,8 +4,8 @@ All the assignements and homeworks are uploaded here for the BU MET CS 526 class
 **Homework 3:**
 
 ***Run:***
-'''locate the directory, then run "python3 plaindrome.py filename.txt"
-'''< also works if you want it as stdin. filename.txt is placeholder for instrunctions.
+    locate the directory, then run "python3 plaindrome.py filename.txt"
+    < also works if you want it as stdin. filename.txt is placeholder for instrunctions.
     
 
 **Problem 1:** (see: palindrome.py and read_check.py)
@@ -19,26 +19,26 @@ Now onto the actual task at hand. the palindrome checker works rather simply (se
 **Problem 2:** (see substring_print.py and read_check.py)
 
 ***Run:***
-'''locate the directory, then run "python3 substring_print.py filename.txt"
-'''< also works if you want it as stdin. filename.txt is placeholder for instrunctions.
+    locate the directory, then run "python3 substring_print.py filename.txt"
+    < also works if you want it as stdin. filename.txt is placeholder for instrunctions.
 
 This question asks us to find every consecutive substring of a string, then print all of them and say how many strings were there. This has to be recursive.
 
 I was thinking for a bit about this. My first approach was to just make an actual function that would do it. However, I realized I could just traverse a tree recursively from left to right and print it out like that (see substring_print.py). First we have to actually make the tree. I started off with making a Node class that has a value and pointers to left and right nodes, as well as the setters and getters. To construct the tree, I start at a string. Check if the string has something and if it doesn't I don't do anything. If it does, I add it to the visited set of nodes and make a node with the value of the string. I set it's left pointer to a subtree with a substring that is missing its last element, then set its right pointer to a subtree with a substring thats missing its first element. This way I get a binary tree and each leaf will be just one letter and all the branches will be that string missing either left or right. Since we start with a non-empty string, we get that the root is set to be the original strign we gave, then the right child will be missing the first letter and the left child will be missing the last, those will have a similar structure. I return node, since, as said before that will be the root of the tree that has all of its pointers set up to point at its respective subtrees.
-'''To traverse it, I will start at a node, then if its empty, I do nothing. Otherwise, I will add it to a set of nodes that we found. Then I will call the same function, but start to the right of the node and to the left. That way all of children of the root will be found.
-'''Then, I get the string using read_check and strip it to get rid of spaces. If it is an empty line I skip it. Set the root by building out the tree and the found set will be just an empty set that will be filled out by traversing the set. After we sort it alphabetically, we print each substring out and at the end the length of the set found.
-'''In conclusion we completely recursively construct a tree of substrings. We recursively traverse it to make a list of all the substirngs. After sorting them we print each one out.
+    To traverse it, I will start at a node, then if its empty, I do nothing. Otherwise, I will add it to a set of nodes that we found. Then I will call the same function, but start to the right of the node and to the left. That way all of children of the root will be found.
+    Then, I get the string using read_check and strip it to get rid of spaces. If it is an empty line I skip it. Set the root by building out the tree and the found set will be just an empty set that will be filled out by traversing the set. After we sort it alphabetically, we print each substring out and at the end the length of the set found.
+    In conclusion we completely recursively construct a tree of substrings. We recursively traverse it to make a list of all the substirngs. After sorting them we print each one out.
 
 **Problem 3:** (see node4.py; node.py; arraystack.py; sllstack.py; dllstack.py; stack_reversal.py)
 
 ***Run:***
-'''locate the directory, then run "python3 stack_reversl.py"
+    locate the directory, then run "python3 stack_reversl.py"
 
 We are tasked with running a recursion on an implementation of a stack. Implementation via array, singly linked list and doubly linked list. Each must support particular methods and reverse the stack in place.
 
 
 *Array:* (see arraystack.py)
-'''I begun by making a class ArrayStack that contains items (by default an empty array).
+    I begun by making a class ArrayStack that contains items (by default an empty array).
 Push appends the array
 
 is_empty inspects the length of the array, if its 0, then its empty.
@@ -48,12 +48,12 @@ pop checks if the stack is empty. If it is, then nothing to remove or return. Ot
 peek checks if its empty, since if it were to be, then nothing to look at. Otherwise just returns the last item in the array, since the last element added is located at the back.
 
 to_list is a method I implemented to actually list out the stack for the output. It works via a recursive helper that takes an index and if the index is at the end of the array we return an empty array. If it isn't, then we return an array with the item at that index and add the next index by calling the function but at the following adjacent index. (Think of it as like a recursive summation.)
-'''Then to_list just sets the index at 0 and call the recursion for the whole list. We, thus, end up with an array of all the items.
+    Then to_list just sets the index at 0 and call the recursion for the whole list. We, thus, end up with an array of all the items.
 
 reverse function has the same logic as the list, in terms of recursion. The helper takes 2 ends of the array (so 2 indices). If the value at the lower end is larger or equal to the one at the higher end, we return nothing. Otherwise we swap the positions of these values. Then the function calls itself, but now with positions, one above the lower end and one below the higher end. Then the reverse function just starts at index 0 and ends with the last index.
 
 *Singly Linked List:* (see sllstack.py)
-'''Note: I will refer to singly linked list as sll
+    Note: I will refer to singly linked list as sll
 
 The elements will be added to the front of the sll list.
 
@@ -68,12 +68,12 @@ pop checks if the list is empty, then sets the top to a temporary variable ('old
 peek checks if the list is empty, then returns the value of the head of the list, since that's where the newest addition of the stack is.
 
 to_list is identical in logic to the to_list of the array stack, but now just done with the helper that starts at a node, rather than an index and returns an array of elements. Important difference, is that since stacks are LIFO, then we need to call the recursion first before we add the element (as the value 1 is actually stored at the tail). So by calling the recursion first we end up adding the tail value to the beginning of the array first and the head last, as the addition after recursion gets called is executed last.
-'''Then to_list calls the helper function and starts at head.
+    Then to_list calls the helper function and starts at head.
 
 reverse calls the helper, similarly to the array stack. It takes in a node. First it checks if it the list has 0 or 1 nodes (since in those cases, there is nothing to do). Then we call the reverse from method until we reach the base case. Since 1 is at the end of the list, we just leave it as is. On nodes with values 1 and 2, we make 1 point at 2, then set 2 to point to nothing. Then we look at nodes with values 2 and 3. We make 2 point at 3 (since we have already freed up the 2 pointer), then make 3 point at nothing. We repeat this process until we get to 9 which will be set to point at 10, then 10 will be pointing at nothing. Thus we have successfully reversed the list. The actual reverse function just calls reverse from head.
 
 *Doubly Linked List:* (see dllstack.py)
-'''Note: I will refer to singly linked list as dll
+    Note: I will refer to singly linked list as dll
 
 Now the new elements will be added at the back of the dll.
 
@@ -92,23 +92,23 @@ peek checks if the list is empty. Then returns the value of the tail.
 listing is a mix of array and sll. Like in sll we traverse over the nodes, but like in array, we first return the value of the current node, then run the recursion, since again, we add the new element to the back of the list.
 
 reverse uses a recursive helper. This helper takes in a node, if its empty, then return nothing. We take the node and take its next adjacent. We make the node next-pointer to point at the previous adjacent and its past-pointer point at the next adjacent. (Even though its pointing 2 ways going forward and backwards have different implications, its not the same as just moving somewhere). We then do this procedure with the next adjacent node.
-'''Once the helper has been established, we start swapping at the head and travel to the tail then we reset the head and tail of the list to be the inverse.
+    Once the helper has been established, we start swapping at the head and travel to the tail then we reset the head and tail of the list to be the inverse.
 
 *Stack Reversal:* (see stack_reversal.py)
 
 We import the 3 classes that we have made and then show them. Since they all share a to_list and reverse methods, we can just call those shared methods.
-'''We load the stacks with numbers 1 through 10, then print using the list method. This ensures that even though our stack implementation has added these numbers to the stack in different ways, the output will be the same. Then reverse them, keeping their individual structures. We then show how the output looks for each one.
+    We load the stacks with numbers 1 through 10, then print using the list method. This ensures that even though our stack implementation has added these numbers to the stack in different ways, the output will be the same. Then reverse them, keeping their individual structures. We then show how the output looks for each one.
 
 
 **Problem 4:** (see ghostbusters.py)
 
 ***Run:***
-'''locate the directory, then run "python3 ghostbusters.py"
+    locate the directory, then run "python3 ghostbusters.py"
 
 What the problem really wants from us is to check if the lines are parallel or not, and if they are parallel, then they are distinct. This makes everything much clearer. It is well known that if 2 lines are parallel, then their cross product will be 0. This will be our main method of verification. The hard part was to realize what to do when a 2 pairs of ghostbusters and ghost were collinear. However, this can be done by looking at an arbitrary vector between a ghost and ghostbuster and the vector position of another ghostbuster. Since the cross product of those, will give a value and it will be unique. If there are 2 such ghostbusters where their vector positions give the same value with the vector between a ghostbuster and a ghost, this will mean that they stand somewhere on the same line. This means that we have to check for each vector between ghostbuster and ghost.
 
 Understanding all of that, gives the key to the solution. First we define and 2 dimensional cross product and with that a method is_parallel, as explained above.
-'''Then, we ensure that the input is correctly formatted. That is that the coordinate of a buster comes first, then the ghost and that their coordinates are of the right dimensions, are integers, and that a ghost and ghostbuster do not share a location. This function will the do two things; output the vector between the ghostbuster and the ghost (from the coordinates), and the position of the buster (since we need it to check the collinearity condition).
-'''elimination will take an arbitrary vector (I simply picked the first one) between the first ghostbuster and ghost. Then we check if any other vector, from the list of coordinates that we got, is nonparallel, if it isn't, we already know that all ghosts wont be eliminated in one shot. However, if that pair of ghostbuster and ghost are parallel, we don't yet move onto the next pair. We calculate the residual between the first vector and the vector position of any other ghostbuster, and add it to a checked array. If there are at least 2 any other vectors that have the same residual, we know that all the ghosts won't be eliminated in one shot (as described above). After all of that, we will have a value, wither true or false for the situation that we are in.
+    Then, we ensure that the input is correctly formatted. That is that the coordinate of a buster comes first, then the ghost and that their coordinates are of the right dimensions, are integers, and that a ghost and ghostbuster do not share a location. This function will the do two things; output the vector between the ghostbuster and the ghost (from the coordinates), and the position of the buster (since we need it to check the collinearity condition).
+    elimination will take an arbitrary vector (I simply picked the first one) between the first ghostbuster and ghost. Then we check if any other vector, from the list of coordinates that we got, is nonparallel, if it isn't, we already know that all ghosts wont be eliminated in one shot. However, if that pair of ghostbuster and ghost are parallel, we don't yet move onto the next pair. We calculate the residual between the first vector and the vector position of any other ghostbuster, and add it to a checked array. If there are at least 2 any other vectors that have the same residual, we know that all the ghosts won't be eliminated in one shot (as described above). After all of that, we will have a value, wither true or false for the situation that we are in.
 
 The main just gets the lines (again see read_check), strips them of any empty lines, and sees if there are any more lines left. It then checks if the number of pairs is a positive integer, corresponding to the actual number of pairs. Then using the methods above, it makes the vectors between the pairs of ghostbusters and ghosts, as well as, recording the vector positions of the busters and prints whether or not the ghosts were eliminated or not. All the errors are caught at the end. 
