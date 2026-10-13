@@ -146,7 +146,9 @@ We import the 3 classes that we have made and then show them. Since they all sha
 
 ***Run:***
 
-&nbsp;&nbsp;&nbsp;&nbsp;locate the directory, then run "python3 ghostbusters.py"
+&nbsp;&nbsp;&nbsp;&nbsp;locate the directory, then run "python3 ghostbusters.py filename.txt"
+&nbsp;&nbsp;&nbsp;&nbsp;< also works if you want it as stdin. filename.txt is placeholder for instrunctions.
+&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 What the problem really wants from us is to check if the lines are parallel or not, and if they are parallel, then they are distinct. This makes everything much clearer. It is well known that if 2 lines are parallel, then their cross product will be 0. This will be our main method of verification. The hard part was to realize what to do when a 2 pairs of ghostbusters and ghost were collinear. However, this can be done by looking at an arbitrary vector between a ghost and ghostbuster and the vector position of another ghostbuster. Since the cross product of those, will give a value and it will be unique. If there are 2 such ghostbusters where their vector positions give the same value with the vector between a ghostbuster and a ghost, this will mean that they stand somewhere on the same line. This means that we have to check for each vector between ghostbuster and ghost.
