@@ -1,7 +1,7 @@
 # METCS526
 All the assignements and homeworks are uploaded here for the BU MET CS 526 class.
 
-***MIDTERM:*** Note that all the code assumes a well specified input for the code. Furthermore the algorithms used programs from previous homeworks, in particular, read_check.
+***MIDTERM:*** Note that all the code assumes a well specified input for the code. Furthermore the algorithms used programs from previous homeworks, in particular, read_check. The solutions themselves are *snowfall.py*, *pandemic.py* and *sudoku.py* respectively. Each will have their own input files and examples (explained below).
 
 
 **Problem 1:**
