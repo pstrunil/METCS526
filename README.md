@@ -32,6 +32,7 @@ Then the code generates a random set of numbers of size 5 to 50, with values 1 t
 
 **HOW TO RUN:** Locate the directory with the code and test files then run: 
 *python3 vowel.py vowel_input1.txt*. The output of different input files is shown in the example of outputs (see Example2.1).
+**Note that this program requires the use of read_check.py to get a valid text input.**
 
 
 First off we make the alphabet of the vowels encoded in morse. The idea of this code is very similar to the tribonacci number problem we had in our previous homework. The key is to cumulatively add up the number of different ways a of morse can  be decomposed into different morse values. Starting by initializing the number of ways as an array of 0s with the size of the code + 1. This is because there is only 1 way to express the starting of the sequence (before any symbol "." or "-" is even placed).
@@ -43,6 +44,7 @@ Then we check between the second and the last positions and for letters in the a
 
 **HOW TO RUN:** Locate the directory with the code and test files then run: 
 *python3 longseq.py longest_seq1.txt*. The output of different input files is shown in the example of outputs (see Example3.1).
+**Note that this program requires the use of read_check.py to get a valid text input.**
 
 
 Here the idea is similar to the problem above. We define *best* as the sequence that satisfies the alternating property that we want. After making the placeholders as array of 0 of lengths *a* and *b* (the given sequences). Then for a position *p* over the longest sequence, if the position is less than the length of *a*. Set the initial best sequence is of length 0. Then for positions over the interval *p* to the length of *b*, if the value of *q*th position in sequence *b* is smaller than that of the *p*th position in sequence *a* and the length of the subsequence of *b* is larger than that of initial best sequence, then we can set that length to be  1 + the length of the initial best sequence. The we use the same logic if the position *p* is smaller than the length of *a*. Then we return the max of the best subsequence of *a* plus that of *b*.
