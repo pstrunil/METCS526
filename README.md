@@ -6,7 +6,7 @@ All the assignements and homeworks are uploaded here for the BU MET CS 526 class
 
 
 **HOW TO RUN:** Locate the directory with the code and test files then run: 
-*python3 bst.py*. Example of outputs (see Example1.1).
+*python3 bst.py*. Example of outputs [see Example1.1].
 
 
 As requested, the class Node is implemented. It was done like in the earlier homeworks. Class BST (Binary Sort Tree) is initialized with a root node and comes with its own getter and setter. 
@@ -31,20 +31,19 @@ Then the code generates a random set of numbers of size 5 to 50, with values 1 t
 
 
 **HOW TO RUN:** Locate the directory with the code and test files then run: 
-*python3 vowel.py vowel_input1.txt*. The output of different input files is shown in the example of outputs (see Example2.1).
+*python3 vowel.py vowel_input1.txt*. The output of different input files is shown in the example of outputs [see Example2.1].
 **Note that this program requires the use of read_check.py to get a valid text input.**
 
 
-First off we make the alphabet of the vowels encoded in morse. The idea of this code is very similar to the tribonacci number problem we had in our previous homework. The key is to cumulatively add up the number of different ways a of morse can  be decomposed into different morse values. Starting by initializing the number of ways as an array of 0s with the size of the code + 1. This is because there is only 1 way to express the starting of the sequence (before any symbol "." or "-" is even placed).
-Then we check between the second and the last positions and for letters in the alphabet, if the code of length of the letter is in the alphabet is equal to a letter in the alphabet, then we can add the number of ways to write that length with letters in the alphabet for that position. Then we return the last element of the array get the answer.
+First off we make the alphabet of the vowels encoded in morse: A `.-`, E `.`, I `..`, O `---`, U `..-`. The idea of this code is very similar to the tribonacci number problem we had in our previous homework. The answer for a longer input is built from the answers for the shorter ones. We let *ways* to be the number of was the first *i* symbols can be written as a sequence of vowels. The array has the length of the code + 1, so there is an entry for every position from 0 (before any symbol) to the end. All entries start at 0 except *ways[0]* = 1, since there is exactly one way to write nothing: with 0 vowels. For each position *i* from 1 to the end and for each vowel, we check whether the symbols just before position *i* are exactly the Morse code of that vowel. If they are, every way of writing the part before that vowel can be extended by it, so we can add *ways[i - length of vowel's code]* to *ways[i]*. Thus, the last entry *ways[n]* is the cumulative answer.
 
 
 **Problem 3:**
 
 
 **HOW TO RUN:** Locate the directory with the code and test files then run: 
-*python3 longseq.py longest_seq1.txt*. The output of different input files is shown in the example of outputs (see Example3.1).
+*python3 longseq.py longest_seq1.txt*. The output of different input files is shown in the example of outputs [see Example3.1].
 **Note that this program requires the use of read_check.py to get a valid text input.**
 
 
-Here the idea is similar to the problem above. We define *best* as the sequence that satisfies the alternating property that we want. After making the placeholders as array of 0 of lengths *a* and *b* (the given sequences). Then for a position *p* over the longest sequence, if the position is less than the length of *a*. Set the initial best sequence is of length 0. Then for positions over the interval *p* to the length of *b*, if the value of *q*th position in sequence *b* is smaller than that of the *p*th position in sequence *a* and the length of the subsequence of *b* is larger than that of initial best sequence, then we can set that length to be  1 + the length of the initial best sequence. The we use the same logic if the position *p* is smaller than the length of *a*. Then we return the max of the best subsequence of *a* plus that of *b*.
+We want the longest sequence whose values and positions are strictly increasing, such that its elements alternate between elements of sequences *a* and *b*. The idea is similar to the problem above. Let *best_a[p]* be the length of the longest valid sequence that ends with the element at position *p* of *a*, and *best_b[p]* the same for *b*. Both start as arrays of 0 with the lengths of *a* and *b*. We go through the positions *p* from left to right. For *a[p]* we look at the positions *q* of *b* that come before *p*. From those, with *b[q] < a[p]*, we take the largest *best_b[q]* (0 if there is none) and set *best_a[p]* to that value + 1. The same is done for *b[p]* using *a*. The answer is the largest value in *best_a* and *best_b*.
